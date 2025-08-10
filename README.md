@@ -1,107 +1,102 @@
-ImgPassGen 📸
-Tu Imagen, Tu Fortaleza: Genera Contraseñas Seguras e Inolvidables
+# ImgPassGen 📸
+
+[![PyPI version](https://badge.fury.io/py/imgpassgen.svg)](https://pypi.org/project/imgpassgen/)
+[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
+[![Python Version](https://img.shields.io/pypi/pyversions/imgpassgen)](https://pypi.org/project/imgpassgen/)
+
+**Tu Imagen, Tu Fortaleza: Genera Contraseñas Seguras e Inolvidables**
+
 ¿Cansado de olvidar contraseñas complejas o de usar patrones predecibles? ImgPassGen transforma una imagen que solo tú conoces y una frase maestra en una contraseña robusta y segura. La misma imagen y la misma frase siempre generarán la misma contraseña, dándote seguridad criptográfica sin tener que memorizar cadenas de texto sin sentido.
 
-🌟 Demo Rápida
-El script de prueba incluido te dará una idea clara de cómo funciona la librería:
+## ✨ Características Principales
 
-✅ Imagen encontrada. Probando la librería con el nuevo algoritmo (PBKDF2)...
-----------------------------------------
-1. Generando contraseña...
-   => Contraseña generada: xSqhRe594SQrJwk7vyopC10IUIzl5wWBOkXvFlTK3Mk=
+- **Generación Determinista**: La misma imagen y frase siempre producen la misma contraseña.
+- **Alta Seguridad**: Utiliza PBKDF2, un algoritmo de derivación de claves estándar en la industria, con un alto número de iteraciones para resistir ataques de fuerza bruta.
+- **Basado en Imágenes**: Usa el hash de una imagen como "sal" criptográfica, haciendo que cada contraseña sea única y personal.
+- **Fácil de Usar**: Una API simple con solo dos funciones principales: `generate_password` y `verify_password`.
+- **Código Abierto**: Licenciado bajo GNU GPLv3, fomentando la colaboración y la transparencia.
 
-2. Verificando con datos CORRECTOS...
-   => ✅ ¡ÉXITO! La verificación es correcta.
+## 🚀 Instalación
 
-3. Verificando con frase INCORRECTA...
-   => ✅ ¡ÉXITO! La verificación falló como se esperaba.
+Puedes instalar ImgPassGen directamente desde PyPI usando pip:
 
-🎉🎉🎉 ¡LO LOGRAMOS! ¡Tu librería funciona! 🎉🎉🎉
+```bash
+pip install imgpassgen
+```
 
-✨ Características Principales
-Generación Determinista: La misma imagen y frase siempre producen la misma contraseña.
+## 💡 Uso Básico
 
-Alta Seguridad: Utiliza PBKDF2, un algoritmo de derivación de claves estándar en la industria, con un alto número de iteraciones para resistir ataques de fuerza bruta.
+```python
+from imgpassgen import generate_password, verify_password
 
-Basado en Imágenes: Usa el hash de una imagen como "sal" criptográfica, haciendo que cada contraseña sea única y personal.
+# Ruta a tu imagen (puede ser .jpg, .png, etc.)
+image_path = "tu_imagen_secreta.jpg"
 
-Fácil de Usar: Una API simple con solo dos funciones principales: generate_password y verify_password.
+# Tu frase maestra
+passphrase = "EstaEsMiFraseSecreta123"
 
-Código Abierto: Licenciado bajo GNU GPLv3, fomentando la colaboración y la transparencia.
+# Generar una contraseña segura
+password = generate_password(image_path, passphrase)
+print(f"Contraseña generada: {password}")
 
-🚀 Cómo Ejecutarlo (Guía de Inicio)
-Para poner en marcha ImgPassGen en tu máquina local, sigue estos pasos.
+# Verificar la contraseña
+is_valid = verify_password(image_path, passphrase, password)
+print(f"¿La verificación fue exitosa? {is_valid}")
+```
 
-1. Clona el Repositorio
+## 📦 Requisitos
 
+- Python 3.7 o superior
+- OpenCV (opencv-python-headless)
+- NumPy
+- Cryptography
+
+## 🔧 Instalación para Desarrollo
+
+Si deseas contribuir al proyecto o modificarlo localmente:
+
+```bash
+# Clonar el repositorio
 git clone https://github.com/YeshuaChiliquingaAmaya/imgpassgen.git
 cd imgpassgen
 
-2. Crea y Activa un Entorno Virtual
-Es una buena práctica para mantener las dependencias aisladas.
+# Crear y activar entorno virtual
+python -m venv venv
+source venv/bin/activate  # En Windows: venv\Scripts\activate
 
-# Usa una versión estable de Python (ej. 3.12, 3.11)
-python3.12 -m venv venv
-source venv/bin/activate
-
-3. Instala las Dependencias
-El proyecto incluye un archivo requirements.txt con todo lo necesario.
-
+# Instalar dependencias
 pip install -r requirements.txt
+```
 
-4. Instala la Librería en Modo Editable
-Esto te permite probar la librería y ver los cambios que hagas en el código al instante.
+## 📝 Ejemplo de Demo
 
-pip install -e .
+El paquete incluye un script de demostración que puedes ejecutar:
 
-5. ¡Ejecuta el Script de Prueba!
-El repositorio incluye un script run_test.py para que veas la magia en acción. Asegúrate de tener una imagen de prueba (ej. mi_foto.jpg) en la carpeta.
-
+```bash
+# Asegúrate de tener una imagen llamada 'pennywise.jpeg' en el directorio actual
 python run_test.py
+```
 
-📚 Documentación de la API (Uso como Librería)
-Puedes importar ImgPassGen en tus propios proyectos de Python de una manera muy sencilla.
+## 🤝 Contribuciones
 
-from imgpassgen import generate_password, verify_password, VerificationError
+¡Las contribuciones son bienvenidas! Por favor, lee nuestras [pautas de contribución](CONTRIBUTING.md) antes de enviar un pull request.
 
-# Define tus entradas
-ruta_de_imagen = "ruta/a/tu/imagen.jpg"
-frase_maestra = "una-frase-secreta-que-recuerdes"
+## 📄 Licencia
 
-# --- Generar una contraseña ---
-try:
-    contrasena_generada = generate_password(ruta_de_imagen, frase_maestra)
-    print(f"Contraseña generada: {contrasena_generada}")
+Este proyecto está distribuido bajo la Licencia Pública General de GNU v3.0 (GPLv3). Consulta el archivo [LICENSE](LICENSE) para más detalles.
 
-except Exception as e:
-    print(f"Error al generar: {e}")
+## 📬 Contacto
 
+¿Preguntas o sugerencias? ¡Abre un issue o contáctame en [GitHub](https://github.com/YeshuaChiliquingaAmaya/imgpassgen/issues)!
 
-# --- Verificar una contraseña ---
-try:
-    # Esto devolverá True si la contraseña es correcta para esa imagen y frase
-    es_correcta = verify_password(contrasena_generada, ruta_de_imagen, frase_maestra)
-    print(f"La verificación fue exitosa: {es_correcta}")
+## ⚙️ ¿Cómo Funciona?
 
-    # Esto lanzará un error `VerificationError`
-    verify_password(contrasena_generada, ruta_de_imagen, "frase-incorrecta")
-
-except VerificationError as e:
-    print(f"Verificación fallida como se esperaba: {e}")
-
-⚙️ ¿Cómo Funciona? La Magia Detrás de ImgPassGen
 El proceso es robusto y sigue las mejores prácticas de seguridad:
 
-Normalización de la Imagen: La imagen de entrada se redimensiona a un tamaño estándar para garantizar que cualquier pequeña variación (como los metadatos) no altere el resultado.
+1. **Normalización de la Imagen**: La imagen de entrada se redimensiona a un tamaño estándar para garantizar que cualquier pequeña variación (como los metadatos) no altere el resultado.
 
-Hash de la Imagen (Sal): Se calcula un hash criptográfico SHA-256 a partir de los bytes de la imagen. Este hash actúa como una "sal" (salt) única y secreta.
+2. **Hash de la Imagen (Sal)**: Se calcula un hash criptográfico SHA-256 a partir de los bytes de la imagen. Este hash actúa como una "sal" (salt) única y secreta.
 
-Derivación de Clave (KDF): Se utiliza el algoritmo PBKDF2-HMAC-SHA256. Este toma tu frase maestra, la combina con la sal de la imagen y realiza miles de iteraciones para producir una clave derivada de 32 bytes, un proceso lento por diseño para frustrar ataques.
+3. **Derivación de Clave (KDF)**: Se utiliza el algoritmo PBKDF2-HMAC-SHA256. Este toma tu frase maestra, la combina con la sal de la imagen y realiza miles de iteraciones para producir una clave derivada de 32 bytes, un proceso lento por diseño para frustrar ataques.
 
-Codificación Final: La clave binaria resultante se codifica en Base64 para convertirla en una contraseña de texto legible que puedes usar en cualquier sitio web.
-
-🤝 Contribuciones
-¡Las contribuciones son bienvenidas! Si tienes ideas para mejorar ImgPassGen, por favor abre un issue para discutirlo o envía un pull request.
-
-📜 Licencia
-Este proyecto está distribuido bajo la Licencia Pública General de GNU v3.0 (GPLv3). Consulta el archivo LICENSE que deberías incluir en tu repositorio para más detalles.
+4. **Codificación Final**: La clave binaria resultante se codifica en Base64 para convertirla en una contraseña de texto legible que puedes usar en cualquier sitio web.

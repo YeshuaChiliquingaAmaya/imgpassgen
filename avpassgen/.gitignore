@@ -1,0 +1,26 @@
+# Entornos virtuales
+venv/
+.venv/
+env/
+.env
+
+# Archivos de caché de Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Archivos de distribución y compilación
+build/
+dist/
+*.egg-info/
+
+# Archivos de dependencias y logs
+pip-log.txt
+
+# Imágenes de prueba (si no quieres que estén en el repo)
+# pennywise.jpeg
+# andresioto.jpeg
+
+# Cache de pytest
+.pytest_cache/
+.coverage

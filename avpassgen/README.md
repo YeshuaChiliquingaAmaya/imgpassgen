@@ -13,7 +13,7 @@ En Windows/macOS/Linux deben existir dispositivos de **cámara** y/o **micrófon
 ## Uso rápido (CLI)
 
 ```bash
-avpassgen gen --length 24 --count 3 --duration 3
+avpassgen --length 24 --count 3 --duration 3
 ```
 
 ## Uso en código
